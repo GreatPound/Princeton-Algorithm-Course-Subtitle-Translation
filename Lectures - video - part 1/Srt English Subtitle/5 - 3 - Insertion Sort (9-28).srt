@@ -1,63 +1,72 @@
 1
 00:00:01,072 --> 00:00:06,008
-现在，我们来看另一个基本的插入排序方法，
+现在，我们来看另一个基本的排序方法 —— 插入排序，
 Now, we look at insertion sort which is
 another elementary method and
 
 2
 00:00:06,008 --> 00:00:10,033
-有意思的是它和选择排序的效果和特点截然不同。
+有意思的是，它和选择排序的效果和特点截然不同。
 interestingly has quite different
 performance, characteristics than
 
 3
 00:00:10,033 --> 00:00:16,059
-
+让我们看一个插入排序的样例。插入排序，
 selection sort. Let's look at a demo of
 insertion sort. For insertion sort, what
 
 4
 00:00:16,059 --> 00:00:22,009
+跟以前一样，我们要把索引i从左到右移动。但是现在，
 we're going to do is we'll move an index i
 from left to right as before. But now, in
 
 5
 00:00:22,009 --> 00:00:27,052
+第i次迭代我们要把a(i)移动到。。。
 the ith iteration we're going to move a(i)
 into position among the elements to its
 
 6
 00:00:27,052 --> 00:00:37,620
+让我们看这个扑克牌是如何运作的。现在我们首先
 left. Let's look at how that works on our
 example with cards. So now we start by
 
 7
 00:00:38,007 --> 00:00:43,302
+初始化i指到i第一张牌的位置，我们的思想是将i和它左边所有元素
 initializing i to first card and we take
 the idea that everything from i to its
 
 8
 00:00:43,302 --> 00:00:48,621
+排序，i右边元素都不看。
 left is going to be sorted and everything
 from the right, we're not going to look
 
 9
 00:00:48,621 --> 00:00:54,423
+因此，i和它左边所有元素升序排列，右边所有元素
 at, at all. So, everything to the left of
 i is in ascending order everything to the
 
 10
 00:00:54,423 --> 00:01:00,319
+都不考虑。现在，当i增加1，嗯，在这个例子里
 right we haven't seen at all yet. So now,
 when we increment i, well, in this case
 
 11
 00:01:00,319 --> 00:01:05,258
+它已经排好序了，我们没有什么可做的了。看第三个例子，
 it's already an order, we don't have
 anything else to do. In the third case
 
 12
 00:01:05,258 --> 00:01:10,599
+现在，当i指到数组第3个元素的位置。现在，
 now, when i at the third entry in the
 array. Now, we start a index j and we move
 
