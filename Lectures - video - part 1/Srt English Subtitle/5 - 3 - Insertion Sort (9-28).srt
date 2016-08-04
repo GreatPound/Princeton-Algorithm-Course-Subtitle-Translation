@@ -18,13 +18,13 @@ insertion sort. For insertion sort, what
 
 4
 00:00:16,059 --> 00:00:22,009
-跟以前一样，我们要把索引i从左到右移动。但是现在，
+跟以前一样，我们要把索引i从左到右移动。不同的是，
 we're going to do is we'll move an index i
 from left to right as before. But now, in
 
 5
 00:00:22,009 --> 00:00:27,052
-第i次迭代我们要把a(i)移动到。。。
+第i次迭代我们要把a(i)移动到左侧元素中间的位置。
 the ith iteration we're going to move a(i)
 into position among the elements to its
 
@@ -48,80 +48,91 @@ from the right, we're not going to look
 
 9
 00:00:48,621 --> 00:00:54,423
-因此，i和它左边所有元素升序排列，右边所有元素
+因此，i和它左边所有元素都升序排列，右边所有元素
 at, at all. So, everything to the left of
 i is in ascending order everything to the
 
 10
 00:00:54,423 --> 00:01:00,319
-都不考虑。现在，当i增加1，嗯，在这个例子里
+都不考虑。现在，当i增加1，嗯，这种情况下
 right we haven't seen at all yet. So now,
 when we increment i, well, in this case
 
 11
 00:01:00,319 --> 00:01:05,258
-它已经排好序了，我们没有什么可做的了。看第三个例子，
+左侧已经排好序了，我们没有什么可做的了。看第三次迭代，
 it's already an order, we don't have
 anything else to do. In the third case
 
 12
 00:01:05,258 --> 00:01:10,599
-现在，当i指到数组第3个元素的位置。现在，
+现在，当i指到数组第3个元素的位置。现在，新建索引j
 now, when i at the third entry in the
 array. Now, we start a index j and we move
 
 13
 00:01:10,599 --> 00:01:16,750
+从i向左移动，我们要做的就是将5与
 that starting at i to the left and what we
 need to do is just exchange the five with
 
 14
 00:01:16,750 --> 00:01:21,867
+左侧每一个大于它的元素交换。索引，首先我们将5与10交换。
 every element to its left that's greater.
 So, first we exchange it with the ten.
 
 15
 00:01:21,867 --> 00:01:27,358
+5仍然没有在对的位置，所以把它与7交换。现在我们到了
 It's still not in place so we exchange it
 with the seven. Now, we get to the
 
 16
 00:01:27,358 --> 00:01:32,288
+数组头部，一旦到了数组头部或者遇到一个更小
 beginning array, of the array and once
 we've done that or we've hit a smaller
 
 17
 00:01:32,288 --> 00:01:38,342
+的元素，左侧所有元素就都按升序排列了。所以现在i再增加1
 element then we have everybody to the left
 of i in order. [cough] So now we increment
 
 18
 00:01:38,342 --> 00:01:44,080
+指到3。同样，我们进行交换操作，只要紧靠3
 i again and we come to the three. Again,
 we exchange as long as the card
 
 19
 00:01:44,080 --> 00:01:50,862
+左边的元素更大。交换完成，则
 immediately to the left is greater. And
 once we've done that, then we have
 
 20
 00:01:50,862 --> 00:01:55,515
+i左侧的所有元素按升序排列。现在，i指到
 everything to the left of i in ascending
 order. Now, in this case, we have the
 
 21
 00:01:55,515 --> 00:02:00,119
+8，我们只需要交换一次，此时，8的左边是7，
 eight and we only have to exchange one and
 now, it's got the seven to its left and
 
 22
 00:02:00,119 --> 00:02:05,506
+排序完成。把8排序好进行的操作更少可以知道，
 everything is in order. So, we've achieved
 putting it in order with less work in this
 
 23
 00:02:05,506 --> 00:02:11,015
+并不总是要扫描到头部。为了与左侧。。。
 case. We don't always have to go all the
 way back to the beginning. For exchange it
 
@@ -132,156 +143,187 @@ until we find a smaller element done in
 
 25
 00:02:18,107 --> 00:02:25,227
+。。。2必须扫描到头部。但是
 its ascending order. Two has to go all the
-way back to the begin ning [cough]. But
+way back to the beginning [cough]. But
 
 26
 00:02:25,227 --> 00:02:32,729
+接下来的9，只需要后退一个位置。下一个6
 then the very next one, the nine, has to
 only go back one position. And the sixth
 
 27
 00:02:32,729 --> 00:02:40,802
+需要后退一半左右。然后整个数组就排序好了。
 has to go about halfway back. [cough] And
 then, we have the entire array sorted.
 
 28
 00:02:40,802 --> 00:02:46,828
+同样，我们可以从不变量观察插入排序。指针仍然
 Again, we can look at insertion sort in
 terms of invariants. Our pointers still
 
 29
 00:02:46,828 --> 00:02:51,906
+从左到右扫描，但是现在指针及其左侧元素
 scans from left to right but now, the
 elements of the left of the pointer,
 
 30
 00:02:51,906 --> 00:02:56,729
+都是有序的，而右侧元素完全没被扫描。
 including it, are in order. But the
 elements to the right have not yet been
 
 31
 00:02:56,729 --> 00:03:01,423
+接下来，我们来看一下代码如何做到 在指针自增时
 seen at all. So, we have to look at the
 code that's going to maintain that
 
 32
 00:03:01,423 --> 00:03:07,213
+保持左侧不变。将指针向右移动，即又增加1。
 invariant as the pointer increments. Move
 the pointer to the right, it's incremented
 
 33
 00:03:07,213 --> 00:03:12,227
+现在，不变量被破环了，因为指针所在元素
 again. Now, the invariant is broken
 because the elements the element on the
 
 34
 00:03:12,227 --> 00:03:17,507
-pointer is not in sorted order to put it
+未排好序。为了将其插入到正确位置，必须从
+pointer is not in sorted order. To put it
 in sorted order, we have to move from
 
 35
 00:03:17,507 --> 00:03:22,356
+右至左依次与其左侧更大的元素交换。
 right to left exchanging it with every
 larger elements to its left. And that's
 
 36
 00:03:22,356 --> 00:03:29,235
+下面的代码就让j从i开始然后自减，
 with the code at the bottom does starts j
-at i and decrements j exchanging j with
+at i and decrements j, exchanging j with
 
 37
 00:03:29,235 --> 00:03:36,608
-the elements to its left. A(j) with the
-element to its left, a(j) - one as long as
+将a(j)与左边元素a(j-1)交换，只要
+the elements to its left. a(j) with the
+element to its left, a(j-1) as long as
 
 38
 00:03:36,896 --> 00:03:43,200
-a(j) is less than a(j) - one or j is
+a(j)小于a(j-1)或者？j大于0。紧接着
+a(j) is less than a(j-1) or j is
 bigger than zero. And that immediately
 
 39
 00:03:43,200 --> 00:03:50,582
+给出了插入排序的代码，它类似于我们选择排序的代码
 gives the, this code for insertion sort
 which is similar to our code for selection
 
 40
 00:03:50,582 --> 00:03:56,563
+并且同样只需要两个嵌套的for循环。。。。
 sort and just as simple it gets two nested
 for loops. Selection sort head to nested
 
 41
 00:03:56,563 --> 00:04:02,619
-four loops a test to comparison and an
-exchange inside the four loop. And that's
+。。。。
+for loops a test to comparison and an
+exchange inside the for loop. And that's
 
 42
 00:04:02,619 --> 00:04:09,050
+这是基本排序方法中一个很好的方法。关于插入排序的
 a fine implementation of an elementary
 sorting method. What about the analysis of
 
 43
 00:04:09,050 --> 00:04:15,882
+分析呢？更加复杂。我们的结论是，插入排序
 insertion sort? It's more complicated. Our
 proposition says that insertions sort to
 
 44
 00:04:15,882 --> 00:04:21,722
+在排序随机顺序的数组。。。。时，进行约N^2 /4次
 sort randomly ordered array with distinct
 keys, it'll use about one-fourth N^2
 
 45
 00:04:21,722 --> 00:04:29,033
+比较以及约。。。
 compares and about the same number when
 one-fourth N^2 exchanges on the average.
 
 46
 00:04:29,033 --> 00:04:34,760
+这是比较复杂的证明。它取决于随机排列的数组。
 This is more complicated to prove. It
 depends on the array being randomly
 
 47
 00:04:34,760 --> 00:04:41,008
+同样地，你能通过这个N×N方阵感受这个结论是怎么得出的。
 ordered. And again, you can get a feeling
 for where the propositioning comes from by
 
 48
 00:04:41,008 --> 00:04:46,212
+黑色的元素表示进行
 looking at this N by N trace. Again, the
 black elements are the ones that we
 
 49
 00:04:46,212 --> 00:04:51,968
+比较操作，其实比较的同时也有交换。红色元素
 compare and actually, there are also the
 exchanges. And the red one is the one
 
 50
 00:04:51,968 --> 00:04:57,523
-that's finally put in to place. And you
-can see t hat for a large array that's
+。。。可以看到，对于一个很大的随机排列数组，
+that's finally put into place. And you
+can see that for a large array that's
 
 51
 00:04:57,523 --> 00:05:02,578
+插入的元素平均要后退一半的位置。。。
 randomly ordered, the element that we put
 into place is going to go about half way
 
 52
 00:05:02,578 --> 00:05:07,780
+因此，这意味着对角线下约一半的元素是
 back on the average. So, that means about
 half the elements below the diagonal are
 
 53
 00:05:07,780 --> 00:05:13,839
+黑色的，因为N^2 /2个元素在对角线以下，它的一半
 going to black on the average cuz N^2 /
 two below the diagonal, half of that is
 
 54
 00:05:13,839 --> 00:05:20,142
+就是N^2 /4。复杂度分析只精确到这种程度。
 N^2 / four. The analysis, exact analysis
 is not much more detailed than that. This
 
 55
 00:05:20,142 --> 00:05:27,073
+这是一个更大的trace，
 is a bigger trace that shows again, about
 half the elements below the diagonal or
 
